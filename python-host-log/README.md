@@ -1,4 +1,5 @@
-# Step to run the application
+# Steps to run the application
+
   docker build -t py-host-logs .
   
   docker images ls
