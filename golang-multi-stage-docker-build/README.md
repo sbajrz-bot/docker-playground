@@ -1,5 +1,7 @@
-# Multi Stage Docker Build
+# Single-stage Build
+A single-stage build uses a single FROM instruction in the Dockerfile. All required tools, dependencies, source code, and build artifacts remain in the final image.
 
-The main purpose of choosing a golang based applciation to demostrate this example is golang is a statically-typed programming language that does not require a runtime in the traditional sense. Unlike dynamically-typed languages like Python, Ruby, and JavaScript, which rely on a runtime environment to execute their code, Go compiles directly to machine code, which can then be executed directly by the operating system.
+# Multi-stage Build
+A multi-stage build uses multiple FROM instructions in the Dockerfile. Each FROM instruction begins a new stage. Assets from previous stages can be selectively copied to the final stage, allowing unnecessary build tools and dependencies to be excluded from the final image.
 
-So the real advantage of multi stage docker build and distro less images can be understand with a drastic decrease in the Image size.
+<img width="900" height="265" alt="image" src="https://github.com/user-attachments/assets/3e98536f-7d90-4f9c-98f6-e72b66d3fc7f" />
