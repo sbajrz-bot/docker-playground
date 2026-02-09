@@ -43,7 +43,7 @@ Applications where image size is not a concern
 
 Educational purposes
 
-Multi-stage Builds
+# Multi-stage Builds
 
 
 # Advantages:
@@ -58,7 +58,7 @@ Cleaner separation of build and runtime concerns
 
 # Use Cases:
 
-# Production environments
+Production environments
 
 Compiled languages (Go, Java, C/C++, etc.)
 
