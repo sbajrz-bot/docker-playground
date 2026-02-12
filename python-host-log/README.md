@@ -9,7 +9,7 @@
     89c73ad285a3   python-host-log   "python app.py"   5 seconds ago   Up 4 seconds   8080/tcp   hostlog-cont
 --------------------------------------------------------------------------------
   docker exec -it hostlog-cont /bin/bash 
-  --------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 
   D:\workspace\docker-playground\python-host-log> docker exec -it hostlog-cont /bin/bash
 root@89c73ad285a3:/app# ls
@@ -30,12 +30,6 @@ root@89c73ad285a3:/app/hostlogs# cat apphost.log
 root@89c73ad285a3:/app/hostlogs#
 Navigate to the root folder
 cd ..
-cd home
-samplejson.json
-testfile.txt
-
-
-docker run -v /home:/app/ python-host-log
 
 -------------------------------------------------------------
 
@@ -47,7 +41,7 @@ CONTAINER ID   IMAGE             COMMAND           CREATED          STATUS      
 cf8becc8d1a8   python-host-log   "python app.py"   8 minutes ago    Up 8 minutes    8080/tcp   friendly_lehmann
 2ca1c3e820bf   ubuntu            "bash"            16 minutes ago   Up 16 minutes              kind_shtern
 
-D:\workspace\docker-playground\python-host-log>docker exec -itttt 072 sh
+D:\workspace\docker-playground\python-host-log>docker exec -it 072 sh
 # pwd
 /app
 # ls
