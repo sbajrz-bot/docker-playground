@@ -1,4 +1,4 @@
-Docker Volumes
+# Docker Volumes
 Problem Statement
 
 It is a very common requirement to persist the data in a Docker container beyond the lifetime of the container. However, the file system of a Docker container is deleted/removed when the container dies.
@@ -9,7 +9,7 @@ There are 2 different ways how docker solves this problem.
     Volumes
     Bind Directory on a host as a Mount
 
-Volumes
+# Volumes
 
 Volumes aims to solve the same problem by providing a way to store data on the host file system, separate from the container's file system, so that the data can persist even if the container is deleted and recreated.
 
@@ -24,17 +24,30 @@ Once a volume is created, you can mount it to a container using the -v or --moun
 
 For example:
 
-In the application log files saved into "/app/mountpath/logs/app.log"
+In the application log files saved into "/app/logs/app.log"
  
+docker volume ls
+docker volume inspect mnt
+docker volume rm mnt
 
 docker build -t pymount .
-
-docker run -it -v <volume_name>:/data <image_name> /bin/bash
+docker run -it -v <volume_name>:/app <image_name> /bin/bash
 docker run  -v  mnt:/mountpath  pymount 
-
 docker run  -v  mnt:/app/mountpath  pymount
 
-This command will mount the volume <volume_name> to the /app directory in the container. Any data written to the /data directory inside the container will be persisted in the volume on the host file system.
+or 
+
+docker build -t python-volume-mount .
+docker run -d --mount source=vmount,target=/app/vmount python-volume-mount
+docker exec -it dababc97b2d8 /bin/bash
+
+root@dababc97b2d8:/app# ls
+Dockerfile  README.md  app.py  requirements.txt  vmount
+root@dababc97b2d8:/app# cat vmount/logs/app.log 
+
+
+
+This command will mount the volume <volume_name> to the /app directory in the container. Any data written to the /app directory inside the container will be persisted in the volume on the host file system.
 Bind Directory on a host as a Mount
 
 Bind mounts also aims to solve the same problem but in a complete different way.
@@ -50,3 +63,22 @@ Key Differences between Volumes and Bind Directory on a host as a Mount
 Volumes are managed, created, mounted and deleted using the Docker API. However, Volumes are more flexible than bind mounts, as they can be managed and backed up separately from the host file system, and can be moved between containers and hosts.
 
 In a nutshell, Bind Directory on a host as a Mount are appropriate for simple use cases where you need to mount a directory from the host file system into a container, while volumes are better suited for more complex use cases where you need more control over the data being persisted in the container.
+
+# Test the container without Docker Volume
+
+docker build -t python-volume-mount .
+ 
+docker run -d python-volume-mount .
+
+
+docker run -d python-volume-mount
+docker ps
+docker exec -it cc3fd415a31d /bin/bash
+root@cc3fd415a31d:/app# ls
+Dockerfile  README.md  app.py  logs  requirements.txt
+root@cc3fd415a31d:/app# cat logs/app.log
+2026-02-11 12:45:55,026 - INFO - This is a log entry for volume mnt
+2026-02-11 12:46:25,045 - INFO - This is a log entry for volume mnt
+root@cc3fd415a31d:/app#
+
+

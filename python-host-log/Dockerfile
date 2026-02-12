@@ -16,6 +16,8 @@ EXPOSE 8080
 # Command to run the application
 CMD ["python", "app.py"]
 
+
+
 # docker run -v /app/hostlogs:/app/logs pyhost
 
 #docker run -v /home/user/logs:/app/logs my-python-app

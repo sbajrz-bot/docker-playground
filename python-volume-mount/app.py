@@ -3,8 +3,8 @@ import time
 from datetime import datetime
 
 # Set up logging
-log_directory = "/app/mountpath/logs"
-log_file = "/app/mountpath/logs/app.log"
+log_directory = "/app/vmount/logs"
+log_file = "/app/vmount/logs/app.log"
 print(log_directory)
 print(log_file)
 # Create logs directory if it doesn't exist
@@ -20,8 +20,8 @@ logging.basicConfig(
 
 def write_log():
     while True:
-        logging.info("This is a log entry for mountpth updated - test3")
-        print("Log written ")
+        logging.info("This is a log entry for volume vmount...")
+        print("Log written in volume ")
         time.sleep(30)  # Wait for 1 minute before writing next log
 
 if __name__ == "__main__":

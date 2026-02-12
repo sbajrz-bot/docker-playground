@@ -3,8 +3,8 @@ import time
 from datetime import datetime
 
 # Set up logging
-log_directory = "/app/hostlogs"
-log_file = "/app/hostlogs/apphost.log"
+log_directory = "/app/logs"
+log_file = "/app/logs/apphost.log"
 print(log_directory)
 print(log_directory)
 # Create logs directory if it doesn't exist
@@ -20,8 +20,8 @@ logging.basicConfig(
 
 def write_log():
     while True:
-        logging.info("This is a log entry for host writable layer.")
-        print("Log written ")
+        logging.info("This is a log entry for python-host-log.")
+        print("Log written in host layer ")
         time.sleep(30)  # Wait for 1 minute before writing next log
 
 if __name__ == "__main__":
